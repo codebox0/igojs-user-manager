@@ -10,6 +10,18 @@ User management application developed with **IGO.js**, following MVC architectur
 - ✅ **MVC Architecture** : Following IGO.js principles
 - ✅ **Integrated ORM** : Using IGO ORM for MySQL
 
+## 📸 Screenshots
+
+### User Management Dashboard
+
+![User Management Dashboard](./assets/users.png)
+_Complete user management interface with list view, role badges, and action buttons_
+
+### User Creation Form
+
+![User Creation Form](./assets/form.png)
+_form for creating, editing and view users_
+
 ## 📋 Prerequisites
 
 - Node.js (version 14+)
