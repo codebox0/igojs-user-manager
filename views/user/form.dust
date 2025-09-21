@@ -1,0 +1,70 @@
+
+{> "layouts/main" /}
+
+
+
+
+{<content}
+
+
+<div class="bg-white shadow rounded-lg">
+  <div class="px-4 py-5 sm:p-6">
+    <a href="/users" class="rounded-md px-3 py-2 text-sm text-white font-medium text-gray-300 hover:bg-gray-700 border border-transparent bg-blue-500 hover:text-white">Liste des Utilisateurs</a>
+              
+    <div class="max-w-2xl mx-auto">
+      <h1 class="text-2xl font-bold text-gray-900 mb-6"> {^isEdit}Utilisateur {user.last_name} {user.first_name} {:else}  {?isEdit}Modifier un{:else}Créer un Nouvel{/isEdit} Utilisateur{/isEdit}  </h1>
+      <form action="{?isEdit}/users/{user.id}/edit{:else}/users/create{/isEdit} " method="{?isEdit}POST{:else}POST{/isEdit}" class="space-y-6">
+        <div>
+          <label for="first_name" class="block text-sm font-medium text-gray-700">Prénom</label>
+          <div class="mt-1">
+            <input type="text" value="{user.first_name}"  {?toShow}disabled{/toShow} name="first_name" id="first_name" required class="block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+          </div>
+        </div>
+        <div>
+          <label for="last_name" {?toShow}disabled{/toShow} class="block text-sm font-medium text-gray-700">Nom</label>
+          <div class="mt-1">
+            <input type="text" value="{user.last_name}" name="last_name" id="last_name" required class="block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+          </div>
+        </div>
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+          <div class="mt-1">
+            <input type="email" value="{user.email}" {?toShow}disabled{/toShow}  name="email" id="email" required class="block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+          </div>
+        </div>
+        <div>
+          <label for="role" class="block text-sm font-medium text-gray-700">Rôle</label>
+          <div class="mt-1">
+            <select name="role" defaultValue={user.role} value={user.role} {?toShow}disabled{/toShow} id="role" required class="block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+              <option value="">Sélectionner un rôle</option>
+              <option value="admin" >Administrateur</option>
+              <option value="user">Utilisateur</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700">Mot de Passe</label>
+          <div class="mt-1">
+            <input type="password" value="{user.password}" {?toShow}disabled{/toShow} name="password" id="password" required class="block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+          </div>
+        </div>
+        {^isShow}
+        <div class="
+          flex justify-end
+        ">
+          <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+           {?isEdit}Modifier{:else}Créer{/isEdit}  l'utilisateur
+          </button>
+        </div>
+        {/toShow}
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+{/content}

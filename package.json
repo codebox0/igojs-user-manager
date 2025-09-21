@@ -1,0 +1,25 @@
+{
+  "name": "user-manager",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "eslint": "eslint ./app ./test",
+    "nodemon": "nodemon app.js",
+    "start": "concurrently \"npm run nodemon\" \"npm run webpack\"",
+    "webpack": "webpack serve --mode=development",
+    "webpack-prod": "webpack --mode=production",
+    "init-db": "node js/init-databse.js",
+    "test": "mocha test/**/*.js --timeout 10000"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "igo": "5.1.7"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/postcss": "^4.1.10",
+    "tailwindcss": "^4.1.10"
+  }
+}

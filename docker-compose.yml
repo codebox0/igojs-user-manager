@@ -1,0 +1,38 @@
+services:
+  # Base de données MySQL
+  mysql:
+    image: mysql:8.0
+    container_name: user-manager-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: user_manager
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user123
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./sql:/docker-entrypoint-initdb.d
+    networks:
+      - user-manager-network
+
+  # Redis Cache (optionnel)
+  redis:
+    image: redis:7-alpine
+    container_name: user-manager-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - user-manager-network
+
+volumes:
+  mysql_data:
+  redis_data:
+
+networks:
+  user-manager-network:
+    driver: bridge
